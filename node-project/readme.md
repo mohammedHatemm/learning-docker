@@ -1,40 +1,3 @@
-# if you want to built a new nodejs project you can follow this commands
-
-1- make the folder of your project
-2- make the file of docker
-`Dockerfile`
-3- some commands must be capital case ->
-
-                                        -> FROM -> the version of node the project needed
-                                        -> WORKDIR -> the place that any comandes will execute and will be in app folder
-                                        -> Copy start.js . -> will copy the file of start.js  into the path of the container
-                                        -> RUN -> here we can run any commands or any dependandeces the prodject will needed like `RUN npm  install express`.
-                                        -> RUN npm install -g nodemon
-                                        -> CMD -> this is the main command that run when the container run
-                                        -> RUN vs CMD ---> RUN exectue during the image is built
-                                                      ---> CMD in the run time
-
-
-                                        -> docker build -t node-no-package .
-                                        ->docker run -it --rm -p 3000:3000 node-no-package
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                         # Complete Node.js Docker Project Setup Guide
 
 This guide will walk you through creating a Node.js project with Docker from scratch, including all necessary commands and Docker concepts.
@@ -182,6 +145,15 @@ docker run -d <image-name>
 
 # Run with custom name
 docker run --name my-container <image-name>
+
+
+
+#to run image and its nodmon
+
+docker run -it --rm -p 3000:3000 \
+  -v $(pwd):/app \
+  -v /app/node_modules \
+  myapp
 ```
 
 ### Docker Run Flags Explained
